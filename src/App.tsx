@@ -5,7 +5,7 @@ import {
   IconActivity,
   IconBell,
   IconChevronDown,
-  IconCircleHelp,
+  IconHelpCircle,
   IconCommand,
   IconLayoutDashboard,
   IconMessages,
@@ -114,7 +114,7 @@ function App() {
             <div className="usage-line"><span>Storage</span><strong>34%</strong></div>
             <div className="usage-track"><span className="storage-fill" style={{ width: '34%' }} /></div>
           </div>
-          <button className="support-link"><IconCircleHelp size={16} /> <span>Help & support</span></button>
+          <button className="support-link"><IconHelpCircle size={16} /> <span>Help & support</span></button>
           <div className="profile-row">
             <span className="profile-avatar">BC</span>
             <span className="profile-meta"><strong>Basha Chandra</strong><small>Workspace admin</small></span>
@@ -136,7 +136,7 @@ function App() {
             <button className="topbar-icon" aria-label="Call"><IconPhone size={18} /></button>
             <button className="topbar-icon" aria-label="Activity"><IconActivity size={18} /></button>
             <button className="topbar-icon notification-button" aria-label="Notifications"><IconBell size={18} /><i /></button>
-            <button className="topbar-icon" aria-label="Help"><IconCircleHelp size={18} /></button>
+            <button className="topbar-icon" aria-label="Help"><IconHelpCircle size={18} /></button>
             <span className="topbar-divider" />
             <button className="topbar-avatar" aria-label="Open profile menu">BC</button>
           </div>
