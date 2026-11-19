@@ -1,54 +1,88 @@
-# Voiceflow Music
+# Voiceflow
 
-An installable music-discovery PWA built with React, TypeScript, Vite and PrimeReact 10.
+Voiceflow is a cross-platform conversational intelligence CRM built with Flutter.
 
-## Stack
+## Supported platforms
 
-- React 18 + TypeScript
-- Vite 7
-- PrimeReact 10.9.9 + PrimeIcons
-- Tabler Icons
-- Vite PWA plugin
-- YouTube Data API v3 search adapter (requires an API key)
+- Flutter Web
+- Android
+- iOS
 
-## Requirements
+## Technology
 
-- Node.js 20.19+
-- npm 10+
+- Flutter + Dart
+- Material 3 foundation with a custom CRM design system
+- Riverpod for application state
+- GoRouter for navigation
 
-## Getting started
+## Prerequisites
+
+Install the current stable Flutter SDK and the platform toolchains you intend to build for:
+
+- Web: Chrome (for local debugging)
+- Android: Android Studio and Android SDK
+- iOS: macOS with Xcode and CocoaPods
+
+Check your environment:
 
 ```bash
-npm install
-cp .env.example .env
-npm run dev
+flutter doctor
 ```
 
-Add a YouTube Data API v3 key to `.env`:
+## Bootstrap platform projects
 
-```env
-VITE_YOUTUBE_API_KEY=your_api_key
+This repository contains the shared Flutter application source. Generate the native runner projects for all targets from the repository root:
+
+```bash
+flutter create --platforms=web,android,ios --org com.voiceflow .
 ```
 
-Restrict the API key in Google Cloud Console to the app's HTTP referrers and enable YouTube Data API v3.
+Then install dependencies and run:
 
-## Available scripts
+```bash
+flutter pub get
+flutter run -d chrome
+```
 
-- `npm run dev` - start the local development server
-- `npm run typecheck` - run TypeScript checks
-- `npm run build` - typecheck and create the production build
-- `npm run preview` - preview the production build
+Android:
 
-## YouTube integration architecture
+```bash
+flutter run -d android
+```
 
-This project uses the official YouTube Data API v3 for video discovery and metadata. Playback will use the official YouTube IFrame Player API. There is no official public YouTube Music API; the Data API and embedded player are the supported integration path.
+iOS (on macOS):
 
-Important: the browser API key is visible to users, so it must be restricted by HTTP referrer and API scope. YouTube playback, branding, attribution, and player requirements must be respected. Do not extract audio streams or bypass the YouTube player.
+```bash
+flutter run -d ios
+```
 
-## Persistence
+Build release artifacts:
 
-No Supabase or remote database is configured. Local preferences and library persistence can be designed separately using browser storage after the core playback flow is validated.
+```bash
+flutter build web
+flutter build appbundle
+flutter build ipa
+```
 
-## PWA notes
+## Project structure
 
-The app shell and static assets are precached. YouTube API responses and YouTube media are intentionally not cached by the service worker.
+```
+lib/
+  app/                  # App composition, router and theme
+  core/                 # Shared application shell and primitives
+  features/
+    dashboard/          # CRM overview feature
+```
+
+Feature modules should own their presentation, state and data layers as they are added. Keep platform-specific behavior behind small adapters and keep business logic shared across platforms.
+
+## Design principles
+
+- Desktop-first information density for CRM workflows, with adaptive tablet and mobile navigation.
+- Material 3 is the foundation, not the finished visual language.
+- Shared design tokens and reusable components live in the app theme and core layer.
+- Use real domain models and API-backed data when integrations are introduced. The current dashboard uses clearly illustrative sample content.
+
+## Current scope
+
+This is the initial Flutter CRM foundation. Authentication, backend services, contacts, call intelligence, inbox, reporting and AI insight workflows are not connected yet.
