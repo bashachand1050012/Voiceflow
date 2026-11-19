@@ -33,7 +33,6 @@ abstract final class AppTheme {
       textTheme: ThemeData(brightness: brightness).textTheme.apply(
             bodyColor: isLight ? AppColors.ink : const Color(0xFFE8ECF2),
             displayColor: isLight ? AppColors.ink : const Color(0xFFE8ECF2),
-            fontFamily: 'Inter',
           ),
       appBarTheme: const AppBarTheme(
         elevation: 0,
@@ -41,7 +40,7 @@ abstract final class AppTheme {
         backgroundColor: Colors.white,
         foregroundColor: AppColors.ink,
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: isLight ? AppColors.surface : const Color(0xFF171B22),
         elevation: 0,
         margin: EdgeInsets.zero,
